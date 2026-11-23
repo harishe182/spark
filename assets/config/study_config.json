@@ -1,0 +1,12 @@
+{
+  "_comment": "Researcher-tunable timing for Spark. Edit values (seconds) and rebuild, or replace at runtime. Any omitted field falls back to the study-brief default. Pilot mode (compressed timings) is toggled in-app, not here.",
+  "intro_seconds": 60,
+  "divergent_seconds": 360,
+  "selection_seconds": 60,
+  "convergent_seconds": 360,
+  "reflection_seconds": 60,
+  "test_drawing_seconds": 600,
+  "divergent_spark_interval_seconds": 90,
+  "convergent_spark_interval_seconds": 120,
+  "snapshot_interval_seconds": 150
+}

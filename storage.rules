@@ -1,0 +1,23 @@
+rules_version = '2';
+
+// Drawing artifacts for the Spark study. Only authenticated research staff may
+// read/write, and only PNG images up to 10 MB under artifacts/. Deploy with:
+// firebase deploy --only storage
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isStaff() {
+      return request.auth != null;
+    }
+
+    match /artifacts/{sessionId}/{fileName} {
+      allow read: if isStaff();
+      allow write: if isStaff()
+        && request.resource.size < 10 * 1024 * 1024
+        && request.resource.contentType.matches('image/png');
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
